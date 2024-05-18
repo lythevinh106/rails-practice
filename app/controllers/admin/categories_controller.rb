@@ -18,10 +18,9 @@ class Admin::CategoriesController < AdminController
     unless @sort_search_query.nil?
       @categories = @categories.search_by_name(@sort_search_query)
     end
- 
-
-
+    puts " day la thay doi commit của vinhIT "
     puts "day la nhanh commit code cuar branch cuar admin the vinh"
+    puts "test git hub commit 1"
     @pagy, @categories = pagy(@categories, items: 2)
   end
 
