@@ -1,0 +1,96 @@
+@import "reset";
+@import "generic-mixin";
+
+@import "variables";
+
+
+@font-face {
+  font-family: myfont1;
+  src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+}
+
+
+.my-font-thin {
+  font-weight: 400 !important;
+  font-style: normal;
+}
+
+.my-font-normal {
+  font-weight: 700 !important;
+  font-style: normal;
+}
+
+.my-font-bold {
+  font-weight: 900 !important;
+  font-style: normal;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+
+th, td {
+  vertical-align: middle;
+}
+
+html,
+body {
+  //background-color: #FFF8F5;
+  //color: var(--c_black);
+  font-size: 16px;
+  font-family: "myfont1", serif !important;
+  font-weight: 700;
+  font-style: normal;
+
+  overflow-x: hidden;
+}
+
+* {
+  font-family: "myfont1", serif !important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.text-black-primary {
+  color: $black !important;
+}
+
+.background-black-secondary {
+
+  background-color: $black-secondary !important;
+}
+
+.my-object-fit {
+
+  height: auto;
+  object-fit: cover;
+}
+
+.my-container1 {
+
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+
+
+.navbar {
+  &__item {
+
+    &:hover {
+      background-color: rgba(235, 218, 100, 0.3);
+    }
+
+  }
+
+  &_link {
+
+    color: #86b7fe !important;
+
+
+  }
+}
+
+
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pratice1</title>
+
+  <%= render "admin/shared/admin_head" %>
+
+  <%= yield :head_menu_admin %>
+
+
+</head>
+
+<body>
+<%#= console %>
+<div id="wrapper overflow-x-hidden">
+
+  <div class="header background-black-secondary d-flex justify-content-between align-items-center my-container1"
+       style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.1)"
+  >
+
+    <div class="logo col-lg-3">
+
+      <img src="https://colorlib.com/polygon/cooladmin/images/icon/logo.png" alt="" style="width: 179px;">
+    </div>
+
+
+    <div class="header-main row col-lg-9 justify-content-end  align-items-center py-3">
+      <!--      <div class="col-lg-4 d-flex align-items-center">-->
+      <!--        <div class="input-group input-group-lg">-->
+      <!--          <input type="text" class="form-control py-2" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">-->
+      <!--          <span class="input-group-text text-white bg-primary font" id="basic-addon1"> <i class="bi bi-search fw-bold text-white"></i></span>-->
+
+      <!--        </div>-->
+      <!--      </div>-->
+
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-end align-items-center ">
+
+
+          <div class="dropdown">
+            <span class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-primary">Xin Chào :</span>
+              <% if user_signed_in? %>
+               <%= current_user.email %>
+               <% end %>
+
+
+                </span>
+            <ul class="dropdown-menu">
+
+              <!--              <li><%#= link_to "Đăng Nhập", new_user_session_path, class: "dropdown-item" %></li>-->
+              <li><%= link_to "Đăng Xuất", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="content position-relative row">
+
+    <%= render "shared/error_messages" %>
+
+
+
+
+
+    <div class="col-lg-2 bg-body-tertiary   ">
+      <div id="navbar my-3  shadow-sm " style="min-height: 97vh">
+
+        <ul class="my-font-thin  pt-4 ">
+
+          <li class="py-3 ps-3   navbar__item  <%= session[:active_navlink] == "orders" ? 'navbar_link' : '' %>">
+
+            <%= link_to admin_orders_path, class: "fs-5" do %>
+               <span>
+                      <i class="bi bi-dropbox"></i>
+               </span>
+              <span class="ms-4 fs-6">
+              Đơn Hàng
+               </span>
+
+            <% end %>
+
+          </li>
+
+          <li class="py-3 ps-3   navbar__item     <%= session[:active_navlink] == "products" ? 'navbar_link' : '' %>">
+
+            <%= link_to admin_products_path, class: "fs-5" do %>
+               <span>
+                      <i class="bi bi-dropbox"></i>
+               </span>
+              <span class="ms-4 fs-6">
+                Sản Phẩm
+               </span>
+
+            <% end %>
+
+
+          </li>
+
+          <li class="py-3 ps-3   navbar__item  <%= session[:active_navlink] == "categories" ? 'navbar_link' : '' %>">
+
+            <%= link_to admin_categories_path, class: "fs-5" do %>
+               <span>
+                      <i class="bi bi-dropbox"></i>
+               </span>
+              <span class="ms-4 fs-6">
+                    Danh Mục
+               </span>
+
+            <% end %>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-10  px-5 py-4">
+      <%= yield %>
+    </div>
+  </div>
+
+
+  <!--footer inport-->
+  <%= render "admin/shared/admin_footer" %>
+  <%= yield :footer_menu_admin %>
+
+</div>
+</body>
+</html>

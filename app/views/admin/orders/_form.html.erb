@@ -1,0 +1,69 @@
+<%= simple_form_for [:admin, @order] do |form| %>
+
+
+  <div class="mb-4">
+
+    <label for="exampleFormControlInput1" class="form-label">Tên Khách Hàng</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" value="<%= @order.user.email %>" readonly>
+
+
+  </div>
+
+
+  <div class="mb-4">
+    <label for="exampleFormControlInput1" class="form-label">Giá Trị Đơn Hàng</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" value="<%= format_price(@order.total_price) %>" readonly>
+  </div>
+
+
+
+
+
+  <ul class="px-5">
+    <%= form.simple_fields_for :product_orders do |product_orders_form| %>
+      <li>
+
+        <div class="mb-4">
+
+          <div class="card">
+            <h5 class="card-header fs-6 fw-semibold"><%= product_orders_form.object.product.title %></h5>
+            <div class="card-body">
+              <div class="my-2">
+
+
+                <%= product_orders_form.input :quantity, as: :integer, input_html: { class: 'form-control', id: :price },
+                                              label: 'Số Lượng', label_html: { class: "form-label" }, wrapper_html: { class: 'my-2' }, required: false %>
+              </div>
+              <div class="my-2">
+                <div class="mb-3">
+                  <label class="form-label">Giá Sản Phẩm</label>
+                  <input class="form-control" readonly value="<%= format_price(product_orders_form.object.product.price) %>"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mb-4">
+    <label for="" class="form-label">Trạng Thái Đơn Hàng</label>
+
+    \
+
+
+    <%= form.collection_select :category_id, Order.statuses, :first, :first, { prompt: "Chọn Trạng Thái Đơn Hàng",
+                                                                               selected: @order.status.to_sym }, { class: "form-select ", 'data-id': 'my-select', 'data-toggle': 'tooltip', id: "my-id" } %>
+
+
+  </div>
+
+
+
+  <div class="d-flex justify-content-center">
+    <%= form.submit "Sửa Đơn Hàng", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+@mixin truncateText($line: 1, $direction: vertical) {
+  display: -webkit-box;
+
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: $direction;
+  overflow: hidden;
+}
+
+
+@mixin mobileResponsive {
+  @media (max-width: 768px) {
+    /* CSS cho mobile */
+  }
+}
+
+/* Mixin cho tablet */
+@mixin tabletResponsive {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* CSS cho tablet */
+  }
+}

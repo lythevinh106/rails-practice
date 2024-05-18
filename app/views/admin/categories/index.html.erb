@@ -1,0 +1,113 @@
+<div class="main  ">
+
+
+  <h3 class="title text-center fs-1  ">
+
+    Danh Mục
+  </h3>
+
+  <div class="filter mb-4 row">
+    <div class="col-lg-2">
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Lọc Theo
+        </button>
+        <ul class="dropdown-menu">
+
+          <li>
+            <%= link_to "Từ Cũ Tới Mới", url_for(sort_id: 'asc'), class: "dropdown-item" %>
+            <%#= link_to "Giá Cao Tới Thấp", { controller: 'admin/categories', action: :index, sort_price: 'asc' }, class: "dropdown-item" %>
+
+          </li>
+          <li>
+            <%= link_to "Từ Mới Tới Cũ", url_for(sort_id: 'desc'), class: "dropdown-item" %>
+            <%#= link_to "Giá Cao Tới Thấp", { controller: 'admin/categories', action: :index, sort_price: 'asc' }, class: "dropdown-item" %>
+
+          </li>
+
+        </ul>
+
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-3">
+
+      <%= link_to new_admin_category_path, class: "btn btn-primary d-inline-block" do %>
+         <span>
+           Thêm Danh Mục
+         </span>
+      <% end %>
+    </div>
+    <div class="col-lg-3 ms-auto">
+
+      <form action="<%= url_for(request.parameters.merge(search_query: "")) %>" method="get">
+        <div class="input-group input-group-sm ">
+          <input type="text" class="form-control py-2" value="<%= params[:search_query] %>" placeholder="Search" aria-label="Search" name="search_query" aria-describedby="basic-addon1">
+          <button type="submit" class="input-group-text text-white bg-primary font" id="basic-addon1">
+            <i class="bi bi-search fw-bold text-white"></i></button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  <table class="table table-striped table-hover table-responsive-lg">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên</th>
+
+      <th scope="col">Kích Hoạt</th>
+      <th scope="col">Hành Động</th>
+
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <% @categories.each_with_index do |category, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td class="">
+          <%= category.name %>
+        </td>
+
+
+        <td class="">
+
+          <div class=" align-center">
+            <i class="bi bi-check-circle-fill fs-4  <%= category.is_active? ? "text-success" : "text-secondary" %> "></i>
+          </div>
+        </td>
+
+        <td>
+          <div class="d-flex ">
+
+            <%= link_to edit_admin_category_path(category.id), class: "btn btn-primary" do %>
+              <i class="bi bi-gear-fill"></i>
+            <% end %>
+
+            <%= button_to admin_category_path(category.id), method: :delete, class: "btn btn-danger " do
+
+            %>
+              <i class="bi bi-trash-fill "></i>
+            <% end %>
+
+
+          </div>
+        </td>
+      </tr>
+
+    <% end %>
+
+
+    </tbody>
+  </table>
+
+
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+
+
+</div>
+

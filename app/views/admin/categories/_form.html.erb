@@ -1,0 +1,75 @@
+<%#= form_with(model: [:admin, @category]) do |form| %>
+
+
+<!--  <div class="mb-4">-->
+<%#= form.label :name, "Tên Danh Mục:", class: "form-label" %>
+<%#= form.text_field :name, class: "form-control", id: :name, placeholder: "Nhập Tên Danh Mục" %>
+<%# @category.errors.messages[:name].each do |message| %>
+<!--      <div class=" small text-danger mt-2">-->
+<%#= message %>
+<!--      </div>-->
+<%# end %>
+<!--  </div>-->
+
+
+
+<!--<div class="mb-4">-->
+<!--  <div class="form-check form-switch d-flex align-items-center">-->
+<%#= form.check_box :is_active, { class: 'form-check-input', role: "switch", id: 'flexSwitchCheckDefault', checked: @category.is_exits_and_equal_true ? 'checked' : '' } %>
+
+
+<%#= form.label :is_active, "Kích Hoạt", { class: "form-check-label ms-2", for: "flexSwitchCheckDefault" } %>
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--  <div class="d-flex justify-content-center">-->
+<%#= form.submit "tạo danh mục", class: "btn btn-primary" %>
+<!--  </div>-->
+<%# end %>
+
+<%#= console %>
+
+
+
+
+<%= simple_form_for [:admin, @category] do |form| %>
+
+
+  <%#= form.input :name, input_html: { class: 'form-control', id: 'name', value: " " }, label: 'Your username please', placeholder: 'nhập vào tên danh mục', wrapper_html: { class: 'mb-4' }, required: false, disabled: false, hint: 'You cannot change your username.', error_html: { id: "custom-error" } %>
+
+
+
+
+
+  <%= form.input :name, input_html: { class: 'form-control', id: 'name' },
+                 label: 'Tên Sản Phẩm', label_html: { class: "form-label" }, placeholder: 'Nhập Tên Danh mục', wrapper_html: { class: 'mb-4' } %>
+
+
+
+
+
+  <%= form.input :is_active, as: :boolean, label: "Kích Hoạt", label_html: { class: "form-check-label ms-4 pt-1", for: "flexSwitchCheckDefault" },
+                 input_html: { checked: @category.is_exits_and_equal_true ? 'checked' : '', style: 'transform: translateX(50%)' },
+                 wrapper_html: { class: 'mb-4 form-check form-switch d-flex align-items-center  ps-0', role: "switch", id: 'flexSwitchCheckDefault' }
+
+  %>
+
+
+
+  <!--<div class="mb-4">-->
+  <!--  <div class="form-check form-switch d-flex align-items-center">-->
+<%#= form.check_box :is_active, { class: 'form-check-input', role: "switch", id: 'flexSwitchCheckDefault', checked: @category.is_exits_and_equal_true ? 'checked' : '' } %>
+
+
+<%#= form.label :is_active, "Kích Hoạt", { class: "form-check-label ms-2", for: "flexSwitchCheckDefault" } %>
+  <!--  </div>-->
+  <!--</div>-->
+
+
+
+
+  <div class="d-flex justify-content-center">
+    <%= form.submit "tạo danh mục", class: "btn btn-primary" %>
+  </div>
+<% end %>
