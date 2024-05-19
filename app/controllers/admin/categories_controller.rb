@@ -24,7 +24,7 @@ class Admin::CategoriesController < AdminController
 
     puts "day la tesst xu li conflic chuyeen nhanh cua vinhit sau dc ddax ammend"
     puts "bo sung sau khi revert "
-
+    puts "test git edit sau khi xaif rebase edit"
     puts "test git hub commit 1"
     @pagy, @categories = pagy(@categories, items: 2)
   end
