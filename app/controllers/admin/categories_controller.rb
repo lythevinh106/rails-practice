@@ -22,7 +22,7 @@ class Admin::CategoriesController < AdminController
     puts "day la nhanh commit code cuar branch cuar admin the vinh"
     puts "day la tesst tao ra conflict cua ly the vinh "
     puts "test git hub commit 1"
-    puts "test revert 1"
+
     puts "day la tesst xu li conflic chuyeen nhanh cua vinhit sau dc ddax ammend"
     @pagy, @categories = pagy(@categories, items: 2)
   end
